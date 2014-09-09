@@ -1,0 +1,162 @@
+#!/usr/bin/perl
+
+use warnings;
+use strict;
+
+my $filename = $ARGV[0];
+open (my $fh, '<:encoding(UTF-8)', $filename) or die "Could not open file '$filename' $!";
+
+my $errors;
+my $warnings;
+
+my $line_num = 0;
+
+while (my $fixup_line = <$fh>) {
+    $line_num++;
+    check_fixup_line($fixup_line, $line_num);
+}
+
+sub t {
+    my ($message) = @_;
+    print $message . "\n";
+}
+
+sub check_fixup_line {
+
+    my ($line, $line_num) = @_;
+
+    if (defined $line) {
+
+        # Blank lines are allowed
+        return if ($line =~ m/^$/);
+
+        # Comments are allowed if they are at the start of the line
+        return if ($line =~ m/^#/);
+
+        # Each valid entry consists of 2 primary fields separated by  "|":
+        # - fixup type (integer between 1-12)
+        # - fixup text (fields separated by "~")
+        #
+        my @fields = split /\|/, $line;
+        if (scalar @fields != 2) {
+            t("E:" . $filename . ":" . $line_num . ":Need both fixup type and fixup text");
+            return;
+        }
+
+        my ($fixup_type, $fixup_text) = @fields;
+        if (! defined $fixup_type || $fixup_type eq '' || $fixup_type !~ m/\d+/) {
+            t("E:" . $filename . ":" . $line_num . ":Invalid fixup type");
+            return;
+        }
+
+        if (! defined $fixup_text || $fixup_text eq '' || $fixup_text !~ m/\w+/) {
+            t("E:" . $filename . ":" . $line_num . ":Invalid fixup text");
+            return;
+        }
+
+        ## fixup types are documented in grab/uk_rt/prog_titles_to_process
+        #if ($fixup_type eq '1')  {
+        #}
+        #elsif ($fixup_type eq '2') {
+        #}
+        #elsif ($fixup_type eq '3') {
+        #}
+        #elsif ($fixup_type eq '4') {
+        #}
+        #elsif ($fixup_type eq '5') {
+            #my @fields = split( /~/, $fixup_text, 2);
+            #if (scalar @fields != 2) {
+                #t("Invalid number of fixup fields (have " . scalar @fields . ", need 2) at line " . $line_num);
+                #return;
+            #}
+        #}
+        #elsif ($fixup_type eq '6') {
+            #my @fields = split( /~/, $fixup_text, 2);
+            #if (scalar @fields != 2) {
+                #t("Invalid number of fixup fields (have " . scalar @fields . ", need 2) at line " . $line_num);
+                #return;
+            #}
+        #}
+        #elsif ($fixup_type eq '7') {
+            #my @fields = split( /~/, $fixup_text, 3);
+            #if (scalar @fields != 3) {
+                #t("Invalid number of fixup fields (have " . scalar @fields . ", need 3) at line " . $line_num);
+                #return;
+            #}
+        #}
+        #elsif ($fixup_type eq '8') {
+            #my @fields = split( /~/, $fixup_text, 4);
+            #if (scalar @fields != 4) {
+                #t("Invalid number of fixup fields (have " . scalar @fields . ", need 4) at line " . $line_num);
+                #return;
+            #}
+            #foreach my $field (@fields) {
+                #$field = "" if ! defined $field;
+            #}
+            #my( $old_title, $old_ep, $new_title, $new_ep ) = @fields;
+            #if ($old_title eq '' or $new_title eq '') {
+                #t("[8] Ignoring fixup '" . $fixup_text . "' as old/new title not given");
+            #}
+
+            #if ($old_title eq $new_title) {
+                #t("[8]   Old/new title are the same - change to type 7 title fixup: '" . $fixup_text . "'");
+            #}
+            #if ($old_ep =~ m/^\Q$new_title\E/) {
+                #t("[8]   Old ep contains new title - change to type 11 title fixup? '" . $fixup_text . "'");
+            #}
+
+        #}
+        #elsif ($fixup_type eq '9') {
+            #my @fields = split( /~/, $fixup_text, 3);
+            #if (scalar @fields != 3) {
+                #t("Invalid number of fixup fields (have " . scalar @fields . ", need 3) at line " . $line_num);
+                #return;
+            #}
+        #}
+        #elsif ($fixup_type eq '10') {
+            #my @fields = split( /~/, $fixup_text, 5);
+            #if (scalar @fields != 5) {
+                #t("Invalid number of fixup fields (have " . scalar @fields . ", need 5) at line " . $line_num);
+                #return;
+            #}
+            #foreach my $field (@fields) {
+                #$field = "" if ! defined $field;
+            #}
+            #my( $old_title, $old_ep, $new_title, $new_ep, $desc ) = @fields;
+            #if ($old_title eq '' or $new_title eq '' or $desc eq '') {
+                #t("[10] Ignoring fixup '" . $fixup_text . "' as titles/desc not given");
+            #}
+
+        #}
+        #elsif ($fixup_type eq '11')  {
+            #my @fields = split( /~/, $fixup_text, 2);
+            #if (scalar @fields != 2) {
+                #t("Invalid number of fixup fields (have " . scalar @fields . ", need 2) at line " . $line_num);
+                #return;
+            #}
+            #my( $brand, $new_title ) = @fields;
+            #if ($brand eq '' or $new_title eq '') {
+                #t("[11] Ignoring fixup '" . $fixup_text . "' as brand/title not given");
+            #}
+
+        #}
+        #elsif ($fixup_type eq '12') {
+            #my @fields = split( /~/, $fixup_text, 2);
+            #if (scalar @fields != 2) {
+                #t("Invalid number of fixup fields (have " . scalar @fields . ", need 2) at line " . $line_num);
+                #return;
+            #}
+        #}
+        #elsif ($fixup_type eq '13') {
+            #my @fields = split( /~/, $fixup_text, 2);
+            #if (scalar @fields != 2) {
+                #t("Invalid number of fixup fields (have " . scalar @fields . ", need 2) at line " . $line_num);
+                #return;
+            #}
+        #}
+        #else {
+            #t("Unknown fixup code seen at line " . $line_num);
+            #return;
+        #}
+    }
+}
