@@ -9,7 +9,7 @@ else
     let g:syntastic_extra_filetypes = ['xmltvfixup']
 endif
 
-let g:syntastic_debug = 1
+" let g:syntastic_debug = 1
 
 let s:save_cpo = &cpo
 set cpo&vim
