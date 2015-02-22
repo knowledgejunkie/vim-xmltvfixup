@@ -6,7 +6,7 @@ error-prone.
 
 This plugin provides:
 
-* Fileytpe detection
+* Filetype detection
 * Syntax highlighting
 * Folding support
 * Fixup linter
@@ -17,7 +17,7 @@ external source code checkers to find and highlight errors.
 
 ## Features
 
-### Fileytpe detection
+### Filetype detection
 
 File paths of \*/grab/uk\_rt/prog\_titles\_to\_process are automatically
 set to the 'xmltvfixup' filetype.
