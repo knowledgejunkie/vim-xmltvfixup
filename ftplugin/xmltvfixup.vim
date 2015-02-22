@@ -1,17 +1,3 @@
-" Configure linter
-
-setlocal makeprg=xmltvfixuplint\ %
-setlocal errorformat=%t:%f:%l:%m
-
-if exists('g:syntastic_extra_filetypes')
-    call add(g:syntastic_extra_filetypes, 'xmltvfixup')
-else
-    let g:syntastic_extra_filetypes = ['xmltvfixup']
-endif
-
-let g:syntastic_xmltvfixup_exec='/usr/local/bin/xmltvfixuplint'
-let g:syntastic_xmltvfixuplint_exec='/usr/local/bin/xmltvfixuplint'
-
 " Configure folding
 
 setlocal foldmethod=expr
