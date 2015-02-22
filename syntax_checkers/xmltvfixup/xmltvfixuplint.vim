@@ -14,16 +14,8 @@ endif
 let s:save_cpo = &cpo
 set cpo&vim
 
-" function! SyntaxCheckers_xmltvfixup_xmltvfixuplint_IsAvailable() dict
-"     return executable(self.getExec())
-" endfunction
-
-let s:parser_name   = 'xmltvfixuplint'
-let s:parse_command = shellescape(expand('<sfile>:p:h') . '/' . s:parser_name)
-
 function! SyntaxCheckers_xmltvfixup_xmltvfixuplint_GetLocList() dict
-"     let makeprg = self.makeprgBuild({})
-    let makeprg     = s:parse_command . ' ' . shellescape(expand('%'))
+    let makeprg = self.makeprgBuild({})
     let errorformat = '%t:%f:%l:%m'
 
     return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
