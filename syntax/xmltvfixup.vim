@@ -1,8 +1,9 @@
 " Vim syntax file
-" Language:	XMLTV Fixups
-" Maintainer:	Nick Morrott <knowledgejunkie@gmail.com
-" Last Change:	2014-09-06
-" Version:      0.10
+" Language:    XMLTV Programme Fixups
+" Maintainer:  Nick Morrott <knowledgejunkie@gmail.com>
+" Last Change: 2014-09-06
+" Version:     0.01
+" License:     Same as Vim
 
 if !exists("main_syntax")
   if version < 600
