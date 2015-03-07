@@ -9,11 +9,16 @@ setlocal foldminlines=0
 setlocal foldlevel=0
 
 function! GetFold(lnum)
+    " first look for (possibly commented) fixup entries to fold
     if getline(a:lnum) =~? '\v^#?[0-9]+\|'
         return '1'
+    " next look for double-commented (##) lines to fold
+    elseif getline(a:lnum) =~? '\v^##'
+        return '1'
+    " everything else is left unfolded
+    else
+        return '0'
     endif
-
-    return '0'
 endfunction
 
 function! FoldText()
