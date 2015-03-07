@@ -23,5 +23,18 @@ endfunction
 
 function! FoldText()
     let foldlinecount = foldclosedend(v:foldstart) - foldclosed(v:foldstart) + 1
-    return '... ' . string(foldlinecount) . ' fixups hidden ...'
+    let pluralsuffix = (foldlinecount > 1) ? 's' : ''
+
+    return '... ' . string(foldlinecount) . ' ' . s:getFixupType(v:foldstart) . pluralsuffix . ' hidden ...'
+endfunction
+
+function! s:getFixupType(lnum)
+    let line = getline(a:lnum)
+    if line =~? '\v^#?[0-9]+\|'
+        return 'Type ' . substitute(line, '^#\?\([0-9]\+\).*$', '\1', '') . ' fixup'
+    elseif line =~? '\v^##'
+        return 'comment line'
+    else
+        return 'unknown line'
+    endif
 endfunction
