@@ -17,13 +17,13 @@ set cpo&vim
 let s:checker = expand('<sfile>:p:h') . '/xmltvfixuplint'
 
 function! SyntaxCheckers_xmltvfixup_xmltvfixuplint_GetLocList() dict
-    let makeprg = self.makeprgBuild({ 'exe' : s:checker })
+    let makeprg = self.makeprgBuild({})
     let errorformat = '%t:%f:%l:%m'
 
     return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
 endfunction
 
-call g:SyntasticRegistry.CreateAndRegisterChecker({ 'filetype': 'xmltvfixup', 'name': 'xmltvfixuplint' })
+call g:SyntasticRegistry.CreateAndRegisterChecker({ 'filetype': 'xmltvfixup', 'name': 'xmltvfixuplint', 'exec': s:checker })
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
