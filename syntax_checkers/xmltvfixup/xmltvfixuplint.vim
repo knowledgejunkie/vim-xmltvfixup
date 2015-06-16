@@ -14,8 +14,10 @@ endif
 let s:save_cpo = &cpo
 set cpo&vim
 
+let s:checker = expand('<sfile>:p:h') . '/xmltvfixuplint'
+
 function! SyntaxCheckers_xmltvfixup_xmltvfixuplint_GetLocList() dict
-    let makeprg = self.makeprgBuild({})
+    let makeprg = self.makeprgBuild({ 'exe' : s:checker })
     let errorformat = '%t:%f:%l:%m'
 
     return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
