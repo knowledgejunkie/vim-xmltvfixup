@@ -35,7 +35,7 @@ sub check_fixup_line {
         return if ($line =~ m/^#/);
 
         # Each valid entry consists of 2 primary fields separated by  "|":
-        # - fixup type (integer between 1-13)
+        # - fixup type (integer between 1-14)
         # - separator (bar: |)
         # - fixup text (fields separated by "~")
         #
@@ -173,6 +173,13 @@ sub check_fixup_line {
             my @fields = split( /~/, $fixup_text, -1);
             if (scalar @fields != 2) {
                 t("E:" . $filename . ":" . $line_num . ":[13] Invalid number of fixup fields (have " . scalar @fields . ", need 2)");
+                return;
+            }
+        }
+        elsif ($fixup_type eq '14') {
+            my @fields = split( /~/, $fixup_text, -1);
+            if (scalar @fields != 2) {
+                t("E:" . $filename . ":" . $line_num . ":[14] Invalid number of fixup fields (have " . scalar @fields . ", need 2)");
                 return;
             }
         }
