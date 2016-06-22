@@ -35,12 +35,12 @@ the following to your .vimrc:
 
 ### Syntax highlighting
 
-Elementary highlighting of the 'xmltvfixup' filetype is used to distinguish the
+Highlighting of the 'xmltvfixup' filetype is used to distinguish the
 following elements in a fixups file:
 
-* Fixup type(number)
+* Fixup type ID (number)
 * Fixup type separator (bar)
-* Fixup text
+* Fixup text fields
 * Fixup text separator (tilde)
 
 
@@ -188,7 +188,6 @@ To use the linter as a standalone utility (must be in your $PATH):
 
 ## TODO
 
-* Improved highlighting
 * Refactor linter, add more checks
 
 

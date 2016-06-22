@@ -406,6 +406,7 @@ endfunction
 " Autocommands {{{1
 
 function! s:setup_aucmds() abort
+    autocmd FileType xmltvfixup set synmaxcol=0
     " Automatically sort fixups when saving file
     autocmd BufWritePre <buffer> :silent! SortXMLTVFixups
 endfunction
