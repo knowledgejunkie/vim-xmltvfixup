@@ -1,3 +1,13 @@
+" Vim Syntastic checker configuration for XMLTV programme fixups
+" Language:    XMLTV programme fixups
+" FileType:    xmltvfixup
+" Maintainer:  Nick Morrott <knowledgejunkie@gmail.com>
+" Website:     https://github.com/knowledgejunkie/vim-xmltvfixup
+" Copyright:   2016, Nick Morrott <knowledgejunkie@gmail.com>
+" License:     Same as Vim
+" Version:     0.03
+" Last Change: 2016-06-30
+
 if exists("g:loaded_syntastic_xmltvfixup_xmltvfixuplint_checker")
     finish
 endif
@@ -27,5 +37,3 @@ call g:SyntasticRegistry.CreateAndRegisterChecker({ 'filetype': 'xmltvfixup', 'n
 
 let &cpo = s:save_cpo
 unlet s:save_cpo
-
-" vim: set et sts=4 sw=4:

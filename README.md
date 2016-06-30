@@ -1,8 +1,8 @@
-# Vim plugin for XMLTV/tv\_grab\_uk\_rt programme fixups
+# Vim plugin for managing XMLTV tv\_augment programme fixups
 
-A Vim plugin providing functionality to make maintaining an XMLTV grabber
-programme fixups file (e.g. prog\_titles\_to\_process for tv\_grab\_uk\_rt)
-easier and less error-prone.
+A Vim plugin providing functionality to make maintaining an [XMLTV][xmltv] grabber
+programme fixups file (e.g. prog\_titles\_to\_process for tv\_grab\_uk\_rt, or
+augment.rules for tv_augment) easier and less error-prone.
 
 This plugin provides:
 
@@ -23,9 +23,8 @@ editor notification of errors.
 
 ### Automatic filetype detection
 
-File paths of \*/grab/uk\_rt/prog\_titles\_to\_process are automatically
-set to the 'xmltvfixup' filetype. (This is the default path to the fixup
-file in an XMLTV checkout.)
+Filenames of prog\_titles\_to\_process and augment.rules are automatically
+set to the 'xmltvfixup' filetype.
 
 Other fixup files can be assigned the 'xmltvfixup' filetype automatically by adding
 the following to your .vimrc:
@@ -201,4 +200,5 @@ Copyright (c) 2014-16 Nick Morrott. Distributed under the same terms as Vim itse
 [syntastic]: https://github.com/scrooloose/syntastic
 [zsh]: http://www.zsh.org
 [prezto]: https://github.com/sorin-ionescu/prezto
+[xmltv]: http://xmltv.org
 [xmltvfixuplint]: https://github.com/knowledgejunkie/vim-xmltvfixup/blob/master/syntax_checkers/xmltvfixup/xmltvfixuplint
