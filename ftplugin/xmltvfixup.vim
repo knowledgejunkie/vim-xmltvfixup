@@ -5,8 +5,8 @@
 " Website:     https://github.com/knowledgejunkie/vim-xmltvfixup
 " Copyright:   2016, Nick Morrott <knowledgejunkie@gmail.com>
 " License:     Same as Vim
-" Version:     0.03
-" Last Change: 2016-06-30
+" Version:     0.04
+" Last Change: 2016-07-02
 
 " Initialisation {{{1
 
@@ -22,8 +22,8 @@ let g:loaded_xmltvfixup = 1
 
 " Script variables {{{1
 
-let s:valid_fixup_types   = [1,2,3,4,5,6,7,8,9,10,11,12,13,14]
-let s:fixup_types_to_sort = [1,2,3,4,5,6,7,8,11,12,13]
+let s:valid_fixup_types   = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+let s:fixup_types_to_sort = [1,2,3,4,5,6,7,8,11,12,13,14,15]
 
 " }}}1
 
@@ -403,6 +403,12 @@ function! s:InsertType14Fixup() abort
     startinsert!
 endfunction
 
+function! s:InsertType15Fixup() abort
+    call append(line('.'), "15|" . @* . "~")
+    normal! j
+    startinsert!
+endfunction
+
 " }}}1
 
 " Custom completion {{{1
@@ -431,6 +437,7 @@ nnoremap <buffer> <silent> <Plug>InsertXMLTVType11Fixup :call <SID>InsertNewFixu
 nnoremap <buffer> <silent> <Plug>InsertXMLTVType12Fixup :call <SID>InsertNewFixup(12)<CR>
 nnoremap <buffer> <silent> <Plug>InsertXMLTVType13Fixup :call <SID>InsertNewFixup(13)<CR>
 nnoremap <buffer> <silent> <Plug>InsertXMLTVType14Fixup :call <SID>InsertNewFixup(14)<CR>
+nnoremap <buffer> <silent> <Plug>InsertXMLTVType15Fixup :call <SID>InsertNewFixup(15)<CR>
 
 if !exists("g:xmltvfixup_no_mappings") || ! g:xmltvfixup_no_mappings
     nmap <buffer> <silent> <LocalLeader>xS <Plug>SortXMLTVFixups
@@ -448,6 +455,7 @@ if !exists("g:xmltvfixup_no_mappings") || ! g:xmltvfixup_no_mappings
     nmap <buffer> <silent> <LocalLeader>xc <Plug>InsertXMLTVType12Fixup
     nmap <buffer> <silent> <LocalLeader>xd <Plug>InsertXMLTVType13Fixup
     nmap <buffer> <silent> <LocalLeader>xe <Plug>InsertXMLTVType14Fixup
+    nmap <buffer> <silent> <LocalLeader>xf <Plug>InsertXMLTVType15Fixup
 endif
 
 " }}}1

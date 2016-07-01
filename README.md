@@ -1,8 +1,8 @@
 # Vim plugin for managing XMLTV tv\_augment programme fixups
 
 A Vim plugin providing functionality to make maintaining an [XMLTV][xmltv] grabber
-programme fixups file (e.g. prog\_titles\_to\_process for tv\_grab\_uk\_rt, or
-augment.rules for tv_augment) easier and less error-prone.
+programme fixups file (e.g. augment.rules for tv_augment) easier and less
+error-prone.
 
 This plugin provides:
 
@@ -112,6 +112,7 @@ filetype only, and only for the current buffer):
     <LocalLeader>xc   <Plug>InsertXMLTVType12Fixup
     <LocalLeader>xd   <Plug>InsertXMLTVType13Fixup
     <LocalLeader>xe   <Plug>InsertXMLTVType14Fixup
+    <LocalLeader>xf   <Plug>InsertXMLTVType15Fixup
 
 
 ## Prerequisites
