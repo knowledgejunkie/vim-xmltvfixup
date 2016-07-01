@@ -433,21 +433,21 @@ nnoremap <buffer> <silent> <Plug>InsertXMLTVType13Fixup :call <SID>InsertNewFixu
 nnoremap <buffer> <silent> <Plug>InsertXMLTVType14Fixup :call <SID>InsertNewFixup(14)<CR>
 
 if !exists("g:xmltvfixup_no_mappings") || ! g:xmltvfixup_no_mappings
-    nmap <buffer> <silent> <Leader>xS <Plug>SortXMLTVFixups
-    nmap <buffer> <silent> <Leader>x1 <Plug>InsertXMLTVType1Fixup
-    nmap <buffer> <silent> <Leader>x2 <Plug>InsertXMLTVType2Fixup
-    nmap <buffer> <silent> <Leader>x3 <Plug>InsertXMLTVType3Fixup
-    nmap <buffer> <silent> <Leader>x4 <Plug>InsertXMLTVType4Fixup
-    nmap <buffer> <silent> <Leader>x5 <Plug>InsertXMLTVType5Fixup
-    nmap <buffer> <silent> <Leader>x6 <Plug>InsertXMLTVType6Fixup
-    nmap <buffer> <silent> <Leader>x7 <Plug>InsertXMLTVType7Fixup
-    nmap <buffer> <silent> <Leader>x8 <Plug>InsertXMLTVType8Fixup
-    nmap <buffer> <silent> <Leader>x9 <Plug>InsertXMLTVType9Fixup
-    nmap <buffer> <silent> <Leader>xa <Plug>InsertXMLTVType10Fixup
-    nmap <buffer> <silent> <Leader>xb <Plug>InsertXMLTVType11Fixup
-    nmap <buffer> <silent> <Leader>xc <Plug>InsertXMLTVType12Fixup
-    nmap <buffer> <silent> <Leader>xd <Plug>InsertXMLTVType13Fixup
-    nmap <buffer> <silent> <Leader>xe <Plug>InsertXMLTVType14Fixup
+    nmap <buffer> <silent> <LocalLeader>xS <Plug>SortXMLTVFixups
+    nmap <buffer> <silent> <LocalLeader>x1 <Plug>InsertXMLTVType1Fixup
+    nmap <buffer> <silent> <LocalLeader>x2 <Plug>InsertXMLTVType2Fixup
+    nmap <buffer> <silent> <LocalLeader>x3 <Plug>InsertXMLTVType3Fixup
+    nmap <buffer> <silent> <LocalLeader>x4 <Plug>InsertXMLTVType4Fixup
+    nmap <buffer> <silent> <LocalLeader>x5 <Plug>InsertXMLTVType5Fixup
+    nmap <buffer> <silent> <LocalLeader>x6 <Plug>InsertXMLTVType6Fixup
+    nmap <buffer> <silent> <LocalLeader>x7 <Plug>InsertXMLTVType7Fixup
+    nmap <buffer> <silent> <LocalLeader>x8 <Plug>InsertXMLTVType8Fixup
+    nmap <buffer> <silent> <LocalLeader>x9 <Plug>InsertXMLTVType9Fixup
+    nmap <buffer> <silent> <LocalLeader>xa <Plug>InsertXMLTVType10Fixup
+    nmap <buffer> <silent> <LocalLeader>xb <Plug>InsertXMLTVType11Fixup
+    nmap <buffer> <silent> <LocalLeader>xc <Plug>InsertXMLTVType12Fixup
+    nmap <buffer> <silent> <LocalLeader>xd <Plug>InsertXMLTVType13Fixup
+    nmap <buffer> <silent> <LocalLeader>xe <Plug>InsertXMLTVType14Fixup
 endif
 
 " }}}1

@@ -97,21 +97,21 @@ mappings can be disabled by setting g:xmltvfixup_no_mappings=1 in your .vimrc
 By default, the following convenience mappings are provided (for the xmltvfixup
 filetype only, and only for the current buffer):
 
-    <Leader>xS   <Plug>SortXMLTVFixups
-    <Leader>x1   <Plug>InsertXMLTVType1Fixup
-    <Leader>x2   <Plug>InsertXMLTVType2Fixup
-    <Leader>x3   <Plug>InsertXMLTVType3Fixup
-    <Leader>x4   <Plug>InsertXMLTVType4Fixup
-    <Leader>x5   <Plug>InsertXMLTVType5Fixup
-    <Leader>x6   <Plug>InsertXMLTVType6Fixup
-    <Leader>x7   <Plug>InsertXMLTVType7Fixup
-    <Leader>x8   <Plug>InsertXMLTVType8Fixup
-    <Leader>x9   <Plug>InsertXMLTVType9Fixup
-    <Leader>xa   <Plug>InsertXMLTVType10Fixup
-    <Leader>xb   <Plug>InsertXMLTVType11Fixup
-    <Leader>xc   <Plug>InsertXMLTVType12Fixup
-    <Leader>xd   <Plug>InsertXMLTVType13Fixup
-    <Leader>xe   <Plug>InsertXMLTVType14Fixup
+    <LocalLeader>xS   <Plug>SortXMLTVFixups
+    <LocalLeader>x1   <Plug>InsertXMLTVType1Fixup
+    <LocalLeader>x2   <Plug>InsertXMLTVType2Fixup
+    <LocalLeader>x3   <Plug>InsertXMLTVType3Fixup
+    <LocalLeader>x4   <Plug>InsertXMLTVType4Fixup
+    <LocalLeader>x5   <Plug>InsertXMLTVType5Fixup
+    <LocalLeader>x6   <Plug>InsertXMLTVType6Fixup
+    <LocalLeader>x7   <Plug>InsertXMLTVType7Fixup
+    <LocalLeader>x8   <Plug>InsertXMLTVType8Fixup
+    <LocalLeader>x9   <Plug>InsertXMLTVType9Fixup
+    <LocalLeader>xa   <Plug>InsertXMLTVType10Fixup
+    <LocalLeader>xb   <Plug>InsertXMLTVType11Fixup
+    <LocalLeader>xc   <Plug>InsertXMLTVType12Fixup
+    <LocalLeader>xd   <Plug>InsertXMLTVType13Fixup
+    <LocalLeader>xe   <Plug>InsertXMLTVType14Fixup
 
 
 ## Prerequisites
