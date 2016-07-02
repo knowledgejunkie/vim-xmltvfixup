@@ -191,7 +191,7 @@ sub check_fixup_line {
             }
         }
         else {
-            t("E:" . $filename . ":" . $line_num . ":Unknown fixup code");
+            t("E:" . $filename . ":" . $line_num . ":Unknown fixup type (please refer to XMLTV::Augment)");
             return;
         }
     }
