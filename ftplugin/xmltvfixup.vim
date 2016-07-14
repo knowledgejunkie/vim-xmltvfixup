@@ -6,7 +6,7 @@
 " Copyright:   2016, Nick Morrott <knowledgejunkie@gmail.com>
 " License:     Same as Vim
 " Version:     0.04
-" Last Change: 2016-07-02
+" Last Change: 2016-07-14
 
 " Initialisation {{{1
 
@@ -471,14 +471,8 @@ command! -buffer -complete=custom,s:CompleteFixupTypes -nargs=1 InsertXMLTVFixup
 
 augroup xmltvfixup
     autocmd!
-    autocmd FileType xmltvfixup set synmaxcol=0
-    autocmd FileType xmltvfixup call s:setup_xmltvfixup()
+    autocmd FileType xmltvfixup setlocal synmaxcol=0
+    autocmd BufWritePre <buffer> :silent! call <SID>SortFixups()
 augroup END
-
-function! s:setup_xmltvfixup()
-    " Enable syntax highlighting on very long lines
-    " Automatically sort fixups when saving file
-    autocmd BufWritePre <buffer> :silent! SortXMLTVFixups
-endfunction
 
 " }}}1
