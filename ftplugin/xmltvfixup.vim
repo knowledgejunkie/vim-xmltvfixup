@@ -3,10 +3,10 @@
 " FileType:    xmltvfixup
 " Maintainer:  Nick Morrott <knowledgejunkie@gmail.com>
 " Website:     https://github.com/knowledgejunkie/vim-xmltvfixup
-" Copyright:   2016, Nick Morrott <knowledgejunkie@gmail.com>
+" Copyright:   2016-19, Nick Morrott <knowledgejunkie@gmail.com>
 " License:     Same as Vim
-" Version:     0.04
-" Last Change: 2016-07-14
+" Version:     0.05
+" Last Change: 2019-04-28
 
 " Initialisation {{{1
 
@@ -22,8 +22,8 @@ let g:loaded_xmltvfixup = 1
 
 " Script variables {{{1
 
-let s:valid_fixup_types   = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
-let s:fixup_types_to_sort = [1,2,3,4,5,6,7,8,11,12,13,14,15]
+let s:valid_fixup_types   = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]
+let s:fixup_types_to_sort = [1,2,3,4,5,6,7,8,11,12,13,14,15,16]
 
 " }}}1
 
@@ -213,6 +213,7 @@ function! s:SortFixupsOfType(type) abort
         call cursor(1,1)
 
         let match_start_pattern = "^" . type . bar_char
+        " also match a change of type in an uncommented list of fixups
         let match_end_pattern   = "^" . end_char
 
         let match_start = search(match_start_pattern, 'cW')
@@ -223,7 +224,7 @@ function! s:SortFixupsOfType(type) abort
             if match_end >= 2 && match_end > match_start
                 let match_end -= 1
                 execute match_start . "," . match_end . " mark b"
-                'a,'bsort
+                'a,'bsort u
             endif
         endif
     else
@@ -279,7 +280,7 @@ endfunction
 
 function! s:InsertType6Fixup() abort
     call append(line('.'), "6|" . @* . "~Documentary")
-    normal! j0fD
+    normal! j0f~l
 endfunction
 
 function! s:InsertType7Fixup() abort
@@ -287,13 +288,13 @@ function! s:InsertType7Fixup() abort
     let list = split(str, '\v:\s')
     if len(list) == 1
         call append(line('.'), "7|" . list[0] . "~~")
-        normal! j0f~l
-        startinsert
+        normal! j0f~;
+        startinsert!
     elseif len(list) == 2
         call append(line('.'), "7|" . list[0] . "~" . list[1] . "~" . substitute(list[1], '\v\s-\s', ': ', ""))
         normal! j0f~;l
     else
-        call append(line('.'), "7|" . list[0] . "~" . join(list[1:], ': ') . "~" . substitute(join(list[1:], ': '), '\v\s-\s', ': ', ""))
+        call append(line('.'), "7|" . list[0] . ": " . list[1] . "~" . join(list[2:], ': ') . "~" . substitute(join(list[2:], ': '), '\v\s-\s', ': ', ""))
         normal! j0f~;l
     endif
 endfunction
@@ -331,11 +332,11 @@ function! s:InsertType8Fixup() abort
         if has_colon
             let list = split(old_t, '\v:\s')
             if len(list) == 2
-                call append(line('.'), "8|" . old_t . "~~" . list[0] . "~" . list[1])
-                normal! j0f~;l
+                call append(line('.'), "8|" . list[0] . "~" . list[1] . "~" . list[0] . "~" . list[1])
+                normal! j0f~;;l
             else
-                call append(line('.'), "8|" . old_t . "~~" . list[0] . "~" . join(list[1:], ': '))
-                normal! j0f~;l
+                call append(line('.'), "8|" . list[0] . "~" . join(list[1:], ': ') . "~" . list[0] . "~" . join(list[1:], ': '))
+                normal! j0f~;;l
             endif
         else
             call append(line('.'), "8|" . old_t . "~~" . old_t . "~")
@@ -378,7 +379,7 @@ endfunction
 
 function! s:InsertType12Fixup() abort
     call append(line('.'), "12|" . @* . "~Entertainment")
-    normal! j0fE
+    normal! j0f~l
 endfunction
 
 function! s:InsertType13Fixup() abort
@@ -407,6 +408,11 @@ function! s:InsertType15Fixup() abort
     call append(line('.'), "15|" . @* . "~")
     normal! j
     startinsert!
+endfunction
+
+function! s:InsertType16Fixup() abort
+    call append(line('.'), "16|" . @* . "~")
+    normal! j0f~
 endfunction
 
 " }}}1
@@ -438,6 +444,7 @@ nnoremap <buffer> <silent> <Plug>InsertXMLTVType12Fixup :call <SID>InsertNewFixu
 nnoremap <buffer> <silent> <Plug>InsertXMLTVType13Fixup :call <SID>InsertNewFixup(13)<CR>
 nnoremap <buffer> <silent> <Plug>InsertXMLTVType14Fixup :call <SID>InsertNewFixup(14)<CR>
 nnoremap <buffer> <silent> <Plug>InsertXMLTVType15Fixup :call <SID>InsertNewFixup(15)<CR>
+nnoremap <buffer> <silent> <Plug>InsertXMLTVType16Fixup :call <SID>InsertNewFixup(16)<CR>
 
 if !exists("g:xmltvfixup_no_mappings") || ! g:xmltvfixup_no_mappings
     nmap <buffer> <silent> <LocalLeader>xS <Plug>SortXMLTVFixups
@@ -456,6 +463,7 @@ if !exists("g:xmltvfixup_no_mappings") || ! g:xmltvfixup_no_mappings
     nmap <buffer> <silent> <LocalLeader>xd <Plug>InsertXMLTVType13Fixup
     nmap <buffer> <silent> <LocalLeader>xe <Plug>InsertXMLTVType14Fixup
     nmap <buffer> <silent> <LocalLeader>xf <Plug>InsertXMLTVType15Fixup
+    nmap <buffer> <silent> <LocalLeader>xg <Plug>InsertXMLTVType16Fixup
 endif
 
 " }}}1
