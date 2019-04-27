@@ -3,10 +3,16 @@
 " FileType:    xmltvfixup
 " Maintainer:  Nick Morrott <knowledgejunkie@gmail.com>
 " Website:     https://github.com/knowledgejunkie/vim-xmltvfixup
-" Copyright:   2016, Nick Morrott <knowledgejunkie@gmail.com>
+" Copyright:   2016-19, Nick Morrott <knowledgejunkie@gmail.com>
 " License:     Same as Vim
-" Version:     0.04
-" Last Change: 2016-07-14
+" Version:     0.05
+" Last Change: 2019-04-28
 
-autocmd BufRead,BufNewFile prog_titles_to_process set filetype=xmltvfixup
-autocmd BufRead,BufNewFile augment.rules set filetype=xmltvfixup
+" all detected augment.rules files get the xmltvfixup filetype
+" but let's not futz with example rules file in the XMLTV source
+autocmd BufRead,BufNewFile augment.rules
+    \ if expand("%:p:h") =~# '/filter/augment' |
+    \   set filetype=txt |
+    \ else |
+    \   set filetype=xmltvfixup |
+    \ endif
